@@ -60,7 +60,6 @@ function App() {
 
 function Header() {
   const style = {};
-  //{ color: "red", fontSize: "48px", textTransform: "uppercase" }
 
   return (
     <header className="header">
@@ -70,48 +69,35 @@ function Header() {
 }
 
 function Menu() {
-  // const pizzas = pizzaData.map((pizza) => {
-  //   return (
-  //     <Pizza
-  //       name={pizza.name}
-  //       photoName={pizza.photoName}
-  //       ingredients={pizza.ingredients}
-  //       price={pizza.price}
-  //     />
-  //   );
-  // });
+  const pizzas = pizzaData;
+  const numPizzas = pizzas.length;
 
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      {/* {pizzas} */}
-      <Pizza
-        name="Pizza Spinaci"
-        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
-        photoName="pizzas/spinaci.jpg"
-        price={10}
-      />
-
-      <Pizza
-        name="Pizza Funghi"
-        ingredients="Tomato, mushrooms"
-        photoName="pizzas/funghi.jpg"
-        price={12}
-      />
+      {numPizzas > 0 ? (
+        <ul className="pizzas">
+          {pizzaData.map((pizza) => {
+            return <Pizza pizza={pizza} key={pizza.name} />;
+          })}
+        </ul>
+      ) : (
+        <p>We're still working on our menu. Please come back later</p>
+      )}
     </main>
   );
 }
 
 function Pizza(props) {
   return (
-    <div className="pizza">
-      <img src={props.photoName} alt={props.name} />
+    <li className="pizza">
+      <img src={props.pizza.photoName} alt={props.pizza.name} />
       <div>
-        <h3>{props.name}</h3>
-        <p>{props.ingredients}</p>
-        <span>{props.price}</span>
+        <h3>{props.pizza.name}</h3>
+        <p>{props.pizza.ingredients}</p>
+        <span>{props.pizza.price}</span>
       </div>
-    </div>
+    </li>
   );
 }
 
@@ -120,11 +106,19 @@ function Footer() {
   const openHour = 12;
   const closeHour = 22;
   const isOpen = hour >= openHour && hour <= closeHour;
-  console.log(isOpen);
 
   return (
     <footer className="footer">
-      {new Date().toLocaleTimeString()} We're curently open
+      {isOpen ? (
+        <div className="order">
+          <p>We're open until {closeHour}:00. Come visit or order online</p>
+          <button className="btn">Order</button>
+        </div>
+      ) : (
+        <p>
+          We're happy to welcome you between {openHour}:00 and {closeHour}:00
+        </p>
+      )}
     </footer>
   );
 }
