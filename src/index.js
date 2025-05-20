@@ -89,6 +89,10 @@ function Menu() {
 }
 
 function Pizza(props) {
+  if (props.pizza.soldOut) {
+    return;
+  }
+
   return (
     <li className="pizza">
       <img src={props.pizza.photoName} alt={props.pizza.name} />
@@ -110,16 +114,22 @@ function Footer() {
   return (
     <footer className="footer">
       {isOpen ? (
-        <div className="order">
-          <p>We're open until {closeHour}:00. Come visit or order online</p>
-          <button className="btn">Order</button>
-        </div>
+        <Order closeHour={closeHour} />
       ) : (
         <p>
           We're happy to welcome you between {openHour}:00 and {closeHour}:00
         </p>
       )}
     </footer>
+  );
+}
+
+function Order(props) {
+  return (
+    <div className="order">
+      <p>We're open until {props.closeHour}:00. Come visit or order online</p>
+      <button className="btn">Order</button>
+    </div>
   );
 }
 
