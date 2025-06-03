@@ -1,3 +1,10 @@
+# Description of Project
+
+The goal of this project to to display a menu of pizzas from a static array of the available pizzas. The pizza will be greyed out in the menu is said pizza is sold out and will display the text SOLD OUT.
+
+The purpose for this project to is practice rendering a list of objects in React and to use conditional rendering to change the styling and content displayed based on the information from the list of pizzaz.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
