@@ -4,6 +4,8 @@ The goal of this project to to display a menu of pizzas from a static array of t
 
 The purpose for this project to is practice rendering a list of objects in React and to use conditional rendering to change the styling and content displayed based on the information from the list of pizzaz.
 
+<img width="1920" alt="Screenshot 2025-06-03 at 9 45 55 AM" src="https://github.com/user-attachments/assets/af95ef3a-922f-4541-8169-326f186cf5ce" />
+
 
 # Getting Started with Create React App
 
